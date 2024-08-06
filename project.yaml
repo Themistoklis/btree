@@ -1,0 +1,10 @@
+name: btree
+target: static
+
+flags:
+  - -Os
+  - -Wall
+  - -Wextra
+
+cflags:
+  - -std=c11

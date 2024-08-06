@@ -1,0 +1,10 @@
+bin/
+build/
+.deps/
+.vscode/
+compile_commands.json
+.cache/
+.DS_Store
+*.exe
+*.o
+*.a
