@@ -1,6 +1,6 @@
 # btree
 
-Ligthweight and portable C AVL tree.
+Lightweight and portable C AVL tree.
 
 ## Table of contents
 
@@ -29,7 +29,7 @@ Copy the two files into your project:
 
 Overwrite the makefile variables as required to generate a static lib.
 
-Example for an arm project cross compilation with your git submodules inside a `submodules` folder:
+Example for an arm project cross-compilation with your git submodules inside a `submodules` folder:
 
 ```bash
 make -C submodules/btree CC=arm-none-eabi-gcc AR=arm-none-eabi-ar CLFAGS=$CFLAGS LDFLAGS=$LDFLAGS lib
@@ -55,7 +55,7 @@ make example
 
 #### Make a structure into a tree node
 
-It is as simple as adding a define at the begining of your structure:
+It is as simple as adding a define at the beginning of your structure:
 
 ```c
 struct user {
@@ -74,7 +74,7 @@ You need to create three functions depending on the key used in the tree to sort
 - compare a node with a pointer to a key
 - get the key pointer from a node
 
-Return rule for the compare functions for ascending order is:
+The return rule for the compare functions for ascending order is:
 
 - $a < b \Rightarrow -1$
 - $a > b \Rightarrow 1$
@@ -119,9 +119,9 @@ btree_init(&tree);
 
 #### Using the tree
 
-The library does not allocate or free anything, you will need to manage that on your side.
+The library does not allocate or free anything, you will need to manage that.
 
-You can't insert a node with a key that already exists in the tree, the function will return a `-EEXIST` errno.
+You can't insert a node with a key already in the tree, the function will return a `-EEXIST` errno.
 
 Add an item to the tree:
 
@@ -137,7 +137,7 @@ btree_insert(&tree, &new_user);
 The function to remove an item from the tree will also return the pointer to the item,
 if the item was dynamically allocated you can then free it.
 
-The function will return `NULL` if no node was found.
+The function will return `NULL` if no node is found.
 
 The `btree_remove` function takes a pointer to a key to remove, but in our example only the value matters:
 ```c
@@ -146,7 +146,7 @@ int key_to_rm = 123;
 struct user* removed = btree_remove(&tree, &key_to_rm);
 ```
 
-Getting an item from the tree, this function will return `NULL` if not item was found,
+Getting an item from the tree, this function will return `NULL` if no item was found,
 it works similarly to `btree_remove`.
 
 ```c
@@ -155,7 +155,7 @@ int key = 123;
 struct user* user = btree_get(&tree, &key);
 ```
 
-The walk function will call the function given in a parameter for each node in the tree.
+The walk function will call the function given as a parameter for each node in the tree.
 The nodes are called in order (dictated by the two compare functions).
 
 ```c
